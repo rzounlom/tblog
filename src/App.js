@@ -1,5 +1,12 @@
 import "./App.css";
 
+import { Route, Switch } from "react-router-dom";
+
+import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
+import Home from "./components/home/Home";
+import Navbar from "./components/nav/Navbar";
+import Posts from "./components/posts/Posts";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -17,7 +24,13 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      App
+      <Navbar />
+      <Switch>
+        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/posts" render={() => <Posts />} />
+        <Route exact path="/contact" render={() => <Contact />} />
+      </Switch>
+      <Footer />
     </>
   );
 }

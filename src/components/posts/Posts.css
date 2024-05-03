@@ -1,0 +1,14 @@
+.posts {
+  width: 100%;
+  height: calc(100vh - 11vh);
+  background-image: url(/public/landing.png);
+  background-size: contain;
+  background-position: center;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .posts {
+    background-size: 150% 100%;
+  }
+}
