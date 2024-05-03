@@ -1,4 +1,5 @@
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Route, Switch } from "react-router-dom";
 
@@ -7,6 +8,7 @@ import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
 import Navbar from "./components/nav/Navbar";
 import Posts from "./components/posts/Posts";
+import SinglePost from "./components/single-post/SinglePost";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" render={() => <Home />} />
+        <Route path="/posts/:postId" render={() => <SinglePost />} />
         <Route exact path="/posts" render={() => <Posts />} />
         <Route exact path="/contact" render={() => <Contact />} />
       </Switch>
