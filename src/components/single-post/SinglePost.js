@@ -20,7 +20,7 @@ const SinglePost = () => {
     try {
       setLoading(true);
       const foundPost = await getPostById(postId);
-      console.log(foundPost);
+      // console.log({ foundPost });
       setPost(foundPost);
     } catch (error) {
       console.error(error);

@@ -1,7 +1,7 @@
 import Accordion from "react-bootstrap/Accordion";
 
 const CommentsList = ({ comments = [] }) => {
-  // console.log(comments);
+  // console.log({ comments });
   return (
     <Accordion defaultActiveKey={comments[0]}>
       {comments.map((comment, index) => (
