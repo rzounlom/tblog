@@ -2,12 +2,12 @@ import "./Contact.css";
 
 import { Button, Form } from "react-bootstrap";
 
-import Alert from "../common/alerts/Alert";
+import { toast } from "react-toastify";
 import { useState } from "react";
 
 const Contact = () => {
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false); // showSuccessAlert is a boolean state variable to show the success alert
-  const [showErrorAlert, setShowErrorAlert] = useState(false); // showErrorAlert is a boolean state variable to show the error alert
+  // const [showSuccessAlert, setShowSuccessAlert] = useState(false); // showSuccessAlert is a boolean state variable to show the success alert
+  // const [showErrorAlert, setShowErrorAlert] = useState(false); // showErrorAlert is a boolean state variable to show the error alert
   const [formData, setFormData] = useState({
     // formData is an object with email, subject, and message properties
     email: "",
@@ -30,7 +30,7 @@ const Contact = () => {
     e.preventDefault();
     console.log(formData);
     if (!formData.email || !formData.subject || !formData.message) {
-      setShowErrorAlert(true);
+      toast.error("Please fill out all fields");
       return;
     }
 
@@ -39,25 +39,12 @@ const Contact = () => {
       subject: "",
       message: "",
     }); // clear the form after submission
-    console.log("Email Successfully Sent with values", formData);
-    setShowSuccessAlert(true); // show the success alert
+    // console.log("Email Successfully Sent with values", formData);
+    toast.success("Email Successfully Sent");
   };
 
   return (
     <div className="contact">
-      <Alert // Alert component to show the success alerts
-        variant="success"
-        show={showSuccessAlert}
-        message="Email Successfully Sent"
-        close={() => setShowSuccessAlert(false)}
-      />
-
-      <Alert // Alert component to show the error alerts
-        variant="danger"
-        show={showErrorAlert}
-        message="Please fill out all fields"
-        close={() => setShowErrorAlert(false)}
-      />
       <h1>Contact</h1>
       <div className="contact-form">
         <Form
