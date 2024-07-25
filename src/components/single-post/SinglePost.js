@@ -14,7 +14,7 @@ const SinglePost = () => {
 
   const [loading, setLoading] = useState(false);
   const [post, setPost] = useState({}); // initialize post state variable
-  const [comment, setComment] = useState([]); // initialize comments state variable
+  const [comment, setComment] = useState(""); // initialize comments state variable
 
   const fetchPost = async () => {
     try {
@@ -35,6 +35,7 @@ const SinglePost = () => {
 
   const submitComment = async (event) => {
     event.preventDefault();
+    console.log({ comment });
     if (!comment) {
       toast.error("Please enter a comment");
       return;
