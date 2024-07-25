@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import CommentsList from "./CommentsList";
+import { formatDate } from "../../utiles/formatDate";
 import { getPostById } from "../../services/postsService";
 import { toast } from "react-toastify";
 import { updatePost } from "../../services/postsService";
@@ -35,7 +36,7 @@ const SinglePost = () => {
 
   const submitComment = async (event) => {
     event.preventDefault();
-    console.log({ comment });
+    // console.log({ comment });
     if (!comment) {
       toast.error("Please enter a comment");
       return;
@@ -120,7 +121,7 @@ const SinglePost = () => {
             </div>
             <div className="item">
               <span>Published: </span>
-              {post.createdAt}
+              {formatDate(post.createdAt)}
             </div>
           </div>
         </div>

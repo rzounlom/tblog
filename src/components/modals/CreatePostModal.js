@@ -32,6 +32,7 @@ function CreatePostModal() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState({
+    title: "",
     author: "",
     destination: "",
     imgUrl: "",
@@ -40,6 +41,7 @@ function CreatePostModal() {
 
   const handleClose = () => {
     setPostData({
+      title: "",
       author: "",
       destination: "",
       imgUrl: "",
@@ -61,9 +63,26 @@ function CreatePostModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(postData);
+
+    //alternative way to check if all fields are filled
+    // if (!Object.values(postData).every((field) => field.length > 0)) {
+    //   toast.error("Please fill in all fields");
+    //   return;
+    // }
+
+    if (
+      !postData.title ||
+      !postData.author ||
+      !postData.destination ||
+      !postData.imgUrl ||
+      !postData.story
+    ) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     const data = {
       ...postData,
-      title: "The Best Vacation Ever",
       published: false,
     };
     try {
@@ -92,6 +111,18 @@ function CreatePostModal() {
         </Modal.Header>
         <Modal.Body>
           <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                type="text"
+                name="title"
+                placeholder="The best vacation ever"
+                value={postData.title}
+                onChange={handleChange}
+                autoFocus
+                required
+              />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Author</Form.Label>
               <Form.Control
