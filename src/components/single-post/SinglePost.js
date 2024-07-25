@@ -46,8 +46,10 @@ const SinglePost = () => {
       });
       // console.log(updatedPost);
       setPost(updatedPost);
+      toast.success("Comment added successfully");
     } catch (error) {
       console.error(error);
+      toast.error("Something went wrong");
     } finally {
       setComment("");
       setLoading(false);
@@ -65,7 +67,7 @@ const SinglePost = () => {
           {loading ? (
             <Spinner animation="border" variant="primary" />
           ) : (
-            <img src={`${post.imgUrl}`} />
+            <img src={`${post.imgUrl}`} alt="destination city" />
           )}
         </div>
         <div className="card-content">
